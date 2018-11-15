@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ItsTehStory/BlitzCovemax/issues"
   },
-  "homepage": "https://github.com/ItsTehStory/BlitzCovemax#readme"
+  "homepage": "https://github.com/ItsTehStory/BlitzCovemax#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
