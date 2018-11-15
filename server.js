@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 var team = {
-    teamName: "string",
+    teamName: "Les Jardiniers",
     solutions: ["rrdrdrdd", "rullur"],
     participants: [
         {
