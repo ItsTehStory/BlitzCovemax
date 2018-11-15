@@ -50,7 +50,7 @@ var team = {
 
 
 app.get('/', function (req, res) {
-    console.log(req);
+    console.log("Requested");
     res.json(team);
 });
 
