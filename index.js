@@ -4,7 +4,6 @@
 resoudre = function() {
 
   var initialChain = "r?d?drdd";
-  var chain = "";
 
   var startingRow = 0;
   var startingCol = 0;
@@ -20,65 +19,66 @@ resoudre = function() {
   var deplacementsStart = 0;
   var deplacementsEnd = 0;
 
+  var i = 0;
 
-  for (i = 0; i < chainLength; i++){
-    while (initialChain.charAt(i) != "?"){
+    while (initialChain.charAt(i) != '?' && i != chainLength - 1){
     switch (initialChain.charAt(i)) {
 
-      case "l":
+      case 'l':
         startingPos.row = startingPos.row - 1;
         deplacementsStart++;
       break;
 
-      case "r":
+      case 'r':
         startingPos.row = startingPos.row + 1;
         deplacementsStart++;
       break;
 
-      case "u":
+      case 'u':
         startingPos.col = startingPos.col - 1;
         deplacementsStart++;
       break;
 
-      case "d":
+      case 'd':
         startingPos.col = startingPos.col + 1;
         deplacementsStart++;
       break;
     }
+    i++;
   }
-}
 
-    for (i = chainLength - 1; i > 0; i--){
-      while (initialChain.charAt(i) != "?"){
+    i = chainLength - 1;
+
+      while (initialChain.charAt(i) != '?' && i > 0){
       switch (initialChain.charAt(i)) {
 
-        case "r":
+        case 'r':
           endPos.row = endPos.row - 1;
           deplacementsEnd++;
         break;
 
-        case "l":
+        case 'l':
           endPos.row = endPos.row + 1;
           deplacementsEnd++;
         break;
 
-        case "d":
+        case 'd':
           endPos.col = endPos.col - 1;
           deplacementsEnd++;
         break;
 
-        case "u":
+        case 'u':
           endPos.col = endPos.col + 1;
           deplacementsEnd++;
         break;
       }
+      i--;
     }
-  }
 
-  chainLength = chainLength - deplacementsStart - deplacementsEnd;
   var chain = initialChain.substring(deplacementsStart, (chainLength - deplacementsEnd));
   var startChain = initialChain.substring(0, deplacementsStart);
   var endChain = initialChain.substring((chainLength - deplacementsEnd), chainLength);
+  chainLength = chainLength - deplacementsStart - deplacementsEnd;
 
   var deplacementHorizontal = endPos.row - startingPos.row;
   var deplacementVertical = endPos.col - startingPos.col;
@@ -86,46 +86,68 @@ resoudre = function() {
   for (i = 0; i < chainLength; i++){
      switch (chain.charAt(i)){
 
-       case "l":
+       case 'l':
          deplacementHorizontal++;
          break;
 
-       case "r":
+       case 'r':
          deplacementHorizontal--;
          break;
 
-       case "u":
+       case 'u':
          deplacementVertical++;
          break;
 
-       case "d":
+       case 'd':
          deplacementVertical--;
          break;
-         
-       case "?":
+
+       case '?':
          break;
      }
   }
 
+  var questionMarks = 0;
+
+  for (i = 0; i < chainLength; i++){
+    if (chain.charAt(i) == '?') {
+      questionMarks++;
+    }
+  }
+
   for (i = 0; i < chainLength; i++){
     var modified = false;
-    if (chain.charAt(i) == "?"){
+    if (chain.charAt(i) == '?'){
       if (deplacementHorizontal > 0){
-          chain.charAt(i) = "r";
+          chain = chain.substring(0, i) + "r" + chain.substring(i + 1, chainLength);
           deplacementHorizontal--;
+          questionMarks--;
           modified = true;
       } else if (deplacementHorizontal < 0 && modified == false){
-        chain.charAt(i) = "l";
-        deplacementHorizontal++;
-        modified = true;
+          chain = chain.substring(0, i) + "l" + chain.substring(i + 1, chainLength);
+	        deplacementHorizontal++;
+	        questionMarks--;
+	        modified = true;
       } else if (deplacementVertical > 0 && modified == false){
-        chain.charAt(i) = "u";
-        deplacementVertical--;
-        modified = true;
+          chain = chain.substring(0, i) + "d" + chain.substring(i + 1, chainLength);
+	        deplacementVertical--;
+	        questionMarks--;
+	        modified = true;
       } else if (deplacementVertical < 0 && modified == false){
-        chain.charAt(i) = "d";
-        deplacementVertical++;
-        modified = true;
+          chain = chain.substring(0, i) + "u" + chain.substring(i + 1, chainLength);
+	        deplacementVertical++;
+	        questionMarks--;
+	        modified = true;
+      } else if (deplacementHorizontal == 0 && questionMarks > 0) {
+		    	chain = chain.substring(0, i) + "l" + chain.substring(i + 1, chainLength);
+	        deplacementHorizontal++;
+	        questionMarks--;
+	        modified = true;
+      } else if (deplacementVertical == 0 && questionMarks > 0) {
+    	    chain = chain.substring(0, i) + "d" + chain.substring(i + 1, chainLength);
+	        deplacementVertical--;
+	        questionMarks--;
+	        modified = true;
       }
     }
   }
