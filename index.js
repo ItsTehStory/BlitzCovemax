@@ -1,23 +1,23 @@
 
 
 
-resoudre = function() {
+resoudre = function () {
 
   var initialChain = "r?d?drdd";
 
-  var startingRow = 0;
-  var startingCol = 0;
+    var startingRow = 0;
+    var startingCol = 0;
 
-  var endRow = 4;
-  var endCol = 4;
+    var endRow = 4;
+    var endCol = 4;
 
-  var chainLength = 8;
+    var chainLength = 8;
 
-  let startingPos = {row: startingRow, col: startingCol};
-  let endPos = {row: endRow, col: endCol};
+    let startingPos = { row: startingRow, col: startingCol };
+    let endPos = { row: endRow, col: endCol };
 
-  var deplacementsStart = 0;
-  var deplacementsEnd = 0;
+    var deplacementsStart = 0;
+    var deplacementsEnd = 0;
 
   var i = 0;
 
@@ -150,8 +150,7 @@ resoudre = function() {
 	        modified = true;
       }
     }
-  }
 
-  var finalChain = startChain + chain + endChain;
-  return finalChain;
+    var finalChain = startChain + chain + endChain;
+    return finalChain;
 }
