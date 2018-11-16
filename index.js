@@ -118,36 +118,42 @@ resoudre = function () {
   for (i = 0; i < chainLength; i++){
     var modified = false;
     if (chain.charAt(i) == '?'){
-      if (deplacementHorizontal > 0){
+      if (deplacementHorizontal > 0 && startingPos.row != 4){
           chain = chain.substring(0, i) + "r" + chain.substring(i + 1, chainLength);
           deplacementHorizontal--;
           questionMarks--;
           modified = true;
-      } else if (deplacementHorizontal < 0 && modified == false){
+          startingPos.row += 1;
+      } else if (deplacementHorizontal < 0 && modified == false && startingPos.row != 0){
           chain = chain.substring(0, i) + "l" + chain.substring(i + 1, chainLength);
 	        deplacementHorizontal++;
 	        questionMarks--;
 	        modified = true;
-      } else if (deplacementVertical > 0 && modified == false){
+          startingPos.row -= 1;
+      } else if (deplacementVertical > 0 && modified == false && startingPos.col != 4){
           chain = chain.substring(0, i) + "d" + chain.substring(i + 1, chainLength);
 	        deplacementVertical--;
 	        questionMarks--;
 	        modified = true;
-      } else if (deplacementVertical < 0 && modified == false){
+          startingPos.col += 1;
+      } else if (deplacementVertical < 0 && modified == false && startingPos.col != 0){
           chain = chain.substring(0, i) + "u" + chain.substring(i + 1, chainLength);
 	        deplacementVertical++;
 	        questionMarks--;
 	        modified = true;
-      } else if (deplacementHorizontal == 0 && questionMarks > 0) {
+          startingPos.col -= 1;
+      } else if (deplacementHorizontal == 0 && questionMarks > 0 && startingPos.row != 4) {
 		    	chain = chain.substring(0, i) + "l" + chain.substring(i + 1, chainLength);
 	        deplacementHorizontal++;
 	        questionMarks--;
 	        modified = true;
-      } else if (deplacementVertical == 0 && questionMarks > 0) {
+          startingPos.row += 1;
+      } else if (deplacementVertical == 0 && questionMarks > 0 && startingPos.col != 4) {
     	    chain = chain.substring(0, i) + "d" + chain.substring(i + 1, chainLength);
 	        deplacementVertical--;
 	        questionMarks--;
 	        modified = true;
+          startingPos.col += 1;
       }
     }
   }
