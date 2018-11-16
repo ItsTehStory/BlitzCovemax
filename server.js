@@ -1,6 +1,8 @@
 var express = require('express');
 var resoudre = require('./index');
+var bodyParser = require('body-parser');
 var app = express();
+app.use(bodyParser.json());
 
 var team = {
     teamName: "Les Jardiniers",
@@ -50,10 +52,23 @@ var team = {
 }
 
 
-app.get('/', function (req, res) {
-    console.log("Requested");
-    var rep = resoudre();
-    team.solutions = [rep];
+// app.get('/', function (req, res) {
+//     console.log("Requested");
+//     var rep = resoudre();
+//     team.solutions = [rep];
+//     res.json(team);
+// });
+
+app.post('/api', function (req, res) {
+    console.log(req.body);
+    var ar = [];
+    req.body.puzzles.forEach(element => {
+        ar.push(resoudre (element.origin, element.end, element.scrambledPath));
+    });
+    // console.log("Entered");
+    // console.log("Requested");
+    // var rep = resoudre();
+    team.solutions = ar;
     res.json(team);
 });
 

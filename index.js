@@ -1,20 +1,25 @@
 
 
+/**
+ * 
+ * @param {{row: int, col: int}} origin 
+ * @param {{row: int, col: int}} end 
+ * @param {String} initialChain 
+ */
+var resoudre = function (origin, end, initialChain) {
 
-var resoudre = function () {
+    // var initialChain = "r?d?drdd";
 
-    var initialChain = "r?d?drdd";
+    // var startingRow = origin.row;
+    // var startingCol = origin.col;
 
-    var startingRow = 0;
-    var startingCol = 0;
+    // var endRow = end.row;
+    // var endCol = end.col;
 
-    var endRow = 4;
-    var endCol = 4;
+    var chainLength = initialChain.length;
 
-    var chainLength = 8;
-
-    let startingPos = { row: startingRow, col: startingCol };
-    let endPos = { row: endRow, col: endCol };
+    let startingPos = origin;// { row: startingRow, col: startingCol };
+    let endPos = end;// { row: endRow, col: endCol };
 
     var deplacementsStart = 0;
     var deplacementsEnd = 0;
