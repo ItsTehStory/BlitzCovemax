@@ -16,7 +16,7 @@ var team = {
             phone: "4189280404",
             school: "Polytechnique Montreal",
             schoolProgram: "Genie Logiciel",
-            graduationDate: 2021
+            graduationDate: 1619827200000
         },
         {
             isCaptain: false,
@@ -26,27 +26,27 @@ var team = {
             phone: "4389989504",
             school: "Polytechnique Montreal",
             schoolProgram: "Genie Logiciel",
-            graduationDate: 2021
+            graduationDate: 1619827200000
         },
         {
             isCaptain: false,
             fullName: "Vincent Tessier",
-            email: "string",
-            googleAccount: "string",
-            phone: "string",
+            email: "vincetess9@gmail.com",
+            googleAccount: "vincetess9@gmail.com",
+            phone: "5149279909",
             school: "Polytechnique Montreal",
             schoolProgram: "Genie Logiciel",
-            graduationDate: 2021
+            graduationDate: 1619827200000
         },
         {
             isCaptain: false,
             fullName: "Hugo Leclair",
-            email: "string",
-            googleAccount: "string",
-            phone: "string",
+            email: "hugo.leclair97@gmail.com",
+            googleAccount: "hugo.leclair97@gmail.com",
+            phone: "5148959436",
             school: "Polytechnique Montreal",
             schoolProgram: "Genie Informatique",
-            graduationDate: 2021
+            graduationDate: 1619827200000
         }
     ]
 }
