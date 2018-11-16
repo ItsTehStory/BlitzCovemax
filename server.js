@@ -1,6 +1,7 @@
 var express = require('express');
 var resoudre = require('./index');
 var bodyParser = require('body-parser');
+var path    = require("path");
 var app = express();
 app.use(bodyParser.json());
 
@@ -51,13 +52,9 @@ var team = {
     ]
 }
 
-
-// app.get('/', function (req, res) {
-//     console.log("Requested");
-//     var rep = resoudre();
-//     team.solutions = [rep];
-//     res.json(team);
-// });
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname+'/index.html'));
+});
 
 app.post('/api', function (req, res) {
     var ar = [];
