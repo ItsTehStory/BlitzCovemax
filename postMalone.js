@@ -24,7 +24,7 @@ var options = {
     method: 'post',
     body: exemple,
     json: true,
-    url: "http://127.0.0.1/api"
+    url: "http://34.227.162.154/api"
 }
 request(options, function (err, res, body) {
     if (err) {

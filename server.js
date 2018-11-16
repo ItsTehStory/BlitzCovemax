@@ -60,7 +60,6 @@ var team = {
 // });
 
 app.post('/api', function (req, res) {
-    console.log(req.body);
     var ar = [];
     req.body.puzzles.forEach(element => {
         ar.push(resoudre (element.origin, element.end, element.scrambledPath));
@@ -70,6 +69,7 @@ app.post('/api', function (req, res) {
     // var rep = resoudre();
     team.solutions = ar;
     res.json(team);
+    console.log(req.body);
 });
 
 try {
