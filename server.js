@@ -11,12 +11,12 @@ var team = {
         {
             isCaptain: true,
             fullName: "Thomas Camire",
-            email: "string",
-            googleAccount: "string",
-            phone: "string",
-            school: "string",
-            schoolProgram: "string",
-            graduationDate: 0
+            email: "thomas.camire@gmail.com",
+            googleAccount: "thomas.camire@gmail.com",
+            phone: "4189280404",
+            school: "Polytechnique Montreal",
+            schoolProgram: "Genie Logiciel",
+            graduationDate: 2021
         },
         {
             isCaptain: false,
@@ -26,7 +26,7 @@ var team = {
             phone: "4389989504",
             school: "Polytechnique Montreal",
             schoolProgram: "Genie Logiciel",
-            graduationDate: 0
+            graduationDate: 2021
         },
         {
             isCaptain: false,
@@ -34,9 +34,9 @@ var team = {
             email: "string",
             googleAccount: "string",
             phone: "string",
-            school: "string",
-            schoolProgram: "string",
-            graduationDate: 0
+            school: "Polytechnique Montreal",
+            schoolProgram: "Genie Logiciel",
+            graduationDate: 2021
         },
         {
             isCaptain: false,
@@ -44,9 +44,9 @@ var team = {
             email: "string",
             googleAccount: "string",
             phone: "string",
-            school: "string",
-            schoolProgram: "string",
-            graduationDate: 0
+            school: "Polytechnique Montreal",
+            schoolProgram: "Genie Informatique",
+            graduationDate: 2021
         }
     ]
 }
