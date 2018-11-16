@@ -1,4 +1,5 @@
 var express = require('express');
+var resoudre = require('./index');
 var app = express();
 
 var team = {
@@ -51,11 +52,13 @@ var team = {
 
 app.get('/', function (req, res) {
     console.log("Requested");
+    var rep = resoudre();
+    team.solutions = [rep];
     res.json(team);
 });
 
 try {
-    app.listen(80);
+    app.listen(80, () => console.log("Listening on port 80"));
 } catch (error) {
     console.log("port 80 = root; stopping");
 }
