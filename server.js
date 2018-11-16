@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 var team = {
     teamName: "Les Jardiniers",
-    solutions: ["rrdrdrdd", "rullur"],
+    solutions: [],
     participants: [
         {
             isCaptain: true,
