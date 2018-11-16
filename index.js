@@ -1,10 +1,10 @@
 
 
 /**
- * 
- * @param {{row: int, col: int}} origin 
- * @param {{row: int, col: int}} end 
- * @param {String} initialChain 
+ *
+ * @param {{row: int, col: int}} origin
+ * @param {{row: int, col: int}} end
+ * @param {String} initialChain
  */
 var resoudre = function (origin, end, initialChain) {
 
@@ -80,8 +80,17 @@ var resoudre = function (origin, end, initialChain) {
         i--;
     }
 
-    var chain = initialChain.substring(deplacementsStart, (chainLength - deplacementsEnd));
-    var startChain = initialChain.substring(0, deplacementsStart);
+    var chain;
+    var startChain;
+
+    if (deplacementsStart != 0) {
+			  chain = initialChain.substring(deplacementsStart - 1, (chainLength - deplacementsEnd));
+			  startChain = initialChain.substring(0, deplacementsStart);
+		  } else {
+			  chain = "";
+			  startChain = "";
+		  }
+
     var endChain = initialChain.substring((chainLength - deplacementsEnd), chainLength);
     chainLength = chainLength - deplacementsStart - deplacementsEnd;
 
@@ -123,38 +132,46 @@ var resoudre = function (origin, end, initialChain) {
     for (i = 0; i < chainLength; i++) {
         var modified = false;
         if (chain.charAt(i) == '?') {
-            if (deplacementHorizontal > 0 && startingPos.row != 4) {
+            if (deplacementHorizontal > 0 && startingPos.row != 4 && chain.substring(i - 1, i) != "l") {
                 chain = chain.substring(0, i) + "r" + chain.substring(i + 1, chainLength);
                 deplacementHorizontal--;
                 questionMarks--;
                 modified = true;
                 startingPos.row += 1;
-            } else if (deplacementHorizontal < 0 && modified == false && startingPos.row != 0) {
+            } else if (deplacementHorizontal < 0 && modified == false && startingPos.row != 0 && chain.substring(i - 1, i) != "r") {
                 chain = chain.substring(0, i) + "l" + chain.substring(i + 1, chainLength);
                 deplacementHorizontal++;
                 questionMarks--;
                 modified = true;
                 startingPos.row -= 1;
-            } else if (deplacementVertical > 0 && modified == false && startingPos.col != 4) {
+            } else if (deplacementVertical > 0 && modified == false && startingPos.col != 4 && chain.substring(i - 1, i) != "u") {
                 chain = chain.substring(0, i) + "d" + chain.substring(i + 1, chainLength);
                 deplacementVertical--;
                 questionMarks--;
                 modified = true;
                 startingPos.col += 1;
-            } else if (deplacementVertical < 0 && modified == false && startingPos.col != 0) {
+            } else if (deplacementVertical < 0 && modified == false && startingPos.col != 0 && chain.substring(i - 1, i) != "d") {
                 chain = chain.substring(0, i) + "u" + chain.substring(i + 1, chainLength);
                 deplacementVertical++;
                 questionMarks--;
                 modified = true;
                 startingPos.col -= 1;
-            } else if (deplacementHorizontal == 0 && questionMarks > 0 && startingPos.row != 4) {
+            } else if (deplacementHorizontal == 0 && questionMarks > 0) {
+                if (chain.substring(i - 1, i) != "r"  && startingPos.row != 0){
                 chain = chain.substring(0, i) + "l" + chain.substring(i + 1, chainLength);
+                } else if (startingPos.row != 4){
+                chain = chain.substring(0, i) + "r" + chain.substring(i + 1, chainLength);
+                }
                 deplacementHorizontal++;
                 questionMarks--;
                 modified = true;
                 startingPos.row += 1;
-            } else if (deplacementVertical == 0 && questionMarks > 0 && startingPos.col != 4) {
+            } else if (deplacementVertical == 0 && questionMarks > 0) {
+                if (chain.substring(i - 1, i) != "u" && startingPos.col != 4){
                 chain = chain.substring(0, i) + "d" + chain.substring(i + 1, chainLength);
+                } else if (startingPos.col != 0){
+                chain = chain.substring(0, i) + "u" + chain.substring(i + 1, chainLength);
+                }
                 deplacementVertical--;
                 questionMarks--;
                 modified = true;
