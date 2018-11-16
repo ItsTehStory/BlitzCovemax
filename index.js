@@ -150,6 +150,7 @@ resoudre = function () {
 	        modified = true;
       }
     }
+  }
 
     var finalChain = startChain + chain + endChain;
     return finalChain;
